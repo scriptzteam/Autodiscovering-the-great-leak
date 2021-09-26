@@ -1,2 +1,23 @@
-# Autodiscovering-the-great-leak
-Autodiscover, a protocol used by Microsoft Exchange for automatic configuration of clients such as Microsoft Outlook, has a design flaw that causes the protocol to “leak” web requests to Autodiscover domains outside of the user’s domain but in the same TLD (i.e. Autodiscover.com).
+# Autodiscovering the great leak
+
+This repository contains a list of Autodiscover domains with all possible TLDs and a mapping to 127.0.0.1 to be included in your local *hosts* file.
+
+## Repository Contents
+* **autodiscover-tlds.txt** list of all possible autodiscover.[tld] combinations and a mapping to 127.0.0.1 to be pasted into your local *hosts* file
+
+## Implementing the contents of this file
+The local *hosts* file gives you the ability to override DNS resolutions. 
+A hostname in the *hosts* file will be resolved to the IP address was hardcoded in the file. The contents of this file are mapping all possible autodiscover.[tld] domains to be resolved as 127.0.0.1 in order to keep credentials from leaking outside of your network.
+
+Various operating systems have their *hosts* file in a different localtion:
+
+Windows:
+```
+%windir%\System32\drivers\etc\hosts
+```
+Linux and macOS:
+```
+/etc/hosts
+```
+
+Append the contents of **autodiscover-tlds.txt** to your local *hosts* file.
